@@ -4,6 +4,9 @@ import 'package:grocery_app_ui/screens/login.dart';
 class IntroWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
+
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
@@ -11,8 +14,8 @@ class IntroWidget extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                width: MediaQuery.of(context).size.width * 0.2,
-                height: MediaQuery.of(context).size.height * 0.2,
+                width: screenWidth * 0.2,
+                height: screenHeight * 0.2,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
@@ -20,8 +23,8 @@ class IntroWidget extends StatelessWidget {
                 child: Center(
                   child: Image.asset(
                     'assets/images/untitled.png',
-                    width: MediaQuery.of(context).size.width * 0.15,
-                    height: MediaQuery.of(context).size.height * 0.15,
+                    width: screenWidth * 0.15,
+                    height: screenHeight * 0.15,
                     fit: BoxFit.contain,
                   ),
                 ),
@@ -37,7 +40,7 @@ class IntroWidget extends StatelessWidget {
                   fontSize: 28,
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.015),
+              SizedBox(height: screenHeight * 0.015),
               const Text(
                 'The best delivery app in town for\n delivering your daily fresh groceries',
                 textAlign: TextAlign.center,
@@ -49,7 +52,7 @@ class IntroWidget extends StatelessWidget {
                   fontSize: 16,
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+              SizedBox(height: screenHeight * 0.02),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
@@ -63,8 +66,8 @@ class IntroWidget extends StatelessWidget {
                     color: Colors.green,
                   ),
                   padding: EdgeInsets.symmetric(
-                      horizontal: MediaQuery.of(context).size.width * 0.04,
-                      vertical: MediaQuery.of(context).size.height * 0.02),
+                      horizontal: screenWidth * 0.04,
+                      vertical: screenHeight * 0.02),
                   child: const Text(
                     'Shop now',
                     style: TextStyle(
@@ -77,7 +80,7 @@ class IntroWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.1),
+              SizedBox(height: screenHeight * 0.1),
               Expanded(
                 child: Image.asset(
                   'assets/images/Paperbagwithhealthyfoodhealthyfoodbackgroundsupermarketfoodconceptshoppingsupermarkethomedeliverymin.png',
