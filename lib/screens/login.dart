@@ -43,9 +43,6 @@ class _LoginState extends State<Login> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Row(
-                children: [],
-              ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.2,
                 height: MediaQuery.of(context).size.height * 0.2,
@@ -116,7 +113,7 @@ class _LoginState extends State<Login> {
                   ],
                 ),
               ),
-              SizedBox(height: MediaQuery.of(context).size.height * 0.17),
+              const Spacer(),
               GestureDetector(
                 onTap: () {
                   Navigator.push(
