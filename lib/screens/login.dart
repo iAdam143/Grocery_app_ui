@@ -3,38 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:grocery_app_ui/screens/home.dart';
 
-class Login extends StatefulWidget {
-  @override
-  _LoginState createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
+class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          leading: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              // shape: BoxShape.circle,
-              border: Border.all(
-                color: Colors.grey
-              ),
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios_rounded,
+              color: Colors.grey,
+              size: 12,
             ),
-            child: IconButton(
-              // padding: EdgeInsets.all(5),
-
-              icon: const Icon(
-                Icons.arrow_back_ios_rounded,
-                color: Colors.grey,
-                size: 12,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
           ),
           backgroundColor: Colors.white,
           elevation: 0,
@@ -46,7 +30,7 @@ class _LoginState extends State<Login> {
               Container(
                 width: MediaQuery.of(context).size.width * 0.2,
                 height: MediaQuery.of(context).size.height * 0.2,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   color: Colors.white,
                   shape: BoxShape.circle,
                 ),
@@ -65,8 +49,6 @@ class _LoginState extends State<Login> {
                 style: TextStyle(
                   color: Colors.black,
                   fontFamily: 'DM Sans',
-                  fontWeight: FontWeight.normal,
-                  height: 1,
                   fontSize: 28,
                 ),
               ),
@@ -76,8 +58,6 @@ class _LoginState extends State<Login> {
                 style: TextStyle(
                   color: Colors.grey,
                   fontFamily: 'DM Sans',
-                  fontWeight: FontWeight.normal,
-                  height: 1,
                   fontSize: 16,
                 ),
               ),
@@ -104,8 +84,6 @@ class _LoginState extends State<Login> {
                         keyboardType: TextInputType.phone,
                         style: TextStyle(
                           fontFamily: 'DM Sans',
-                          //fontWeight: FontWeight.normal,
-                          //color: Colors.grey,
                           backgroundColor: Colors.white,
                         ),
                       ),
@@ -136,8 +114,6 @@ class _LoginState extends State<Login> {
                       color: Colors.white,
                       fontFamily: 'DM Sans',
                       fontSize: 16,
-                      fontWeight: FontWeight.normal,
-                      height: 1,
                     ),
                   ),
                 ),
@@ -149,8 +125,6 @@ class _LoginState extends State<Login> {
                 style: TextStyle(
                   color: Colors.grey,
                   fontFamily: 'DM Sans',
-                  fontWeight: FontWeight.normal,
-                  height: 1,
                   fontSize: 16,
                 ),
               ),

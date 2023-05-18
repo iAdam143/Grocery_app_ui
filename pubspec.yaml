@@ -59,7 +59,6 @@ dev_dependencies:
 # The following section is specific to Flutter packages.
 flutter:
   assets:
-    - assets/images/vector.svg
     - assets/images/untitled.png
     - assets/images/Paperbagwithhealthyfoodhealthyfoodbackgroundsupermarketfoodconceptshoppingsupermarkethomedeliverymin.png
     - assets/images/Kindpng_73363541.png
@@ -71,6 +70,8 @@ flutter:
     - assets/images/broccoli.png
     - assets/images/cheese.png
     - assets/images/meat.png
+    - assets/images/lamb_meat.png
+    - assets/images/bell_pepper.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

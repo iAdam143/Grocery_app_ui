@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Home extends StatefulWidget {
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<Home> {
+class Home extends StatelessWidget {
   final List<Map<String, dynamic>> _offers = [
     {
       'image': 'assets/images/Rectangle 4377.png',
@@ -21,98 +16,102 @@ class _HomePageState extends State<Home> {
     },
   ];
 
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: const Padding(
-            padding: EdgeInsets.only(left: 16.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage('assets/images/Group 289.png'),
-            ),
-          ),
-          title: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Text(
-                'Good Morning',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 10,
-                ),
-              ),
-              Text(
-                'Amrelia Barlow',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ],
-          ),
-          actions: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
-              child: TextButton(
-                onPressed: () {
-                  // Handle button tap
-                },
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(50.0),
-                  ),
-                  backgroundColor:
-                      Colors.white, // Set your desired background color
-                ),
-                child: Row(
-                  children: const [
-                    Icon(
-                      Icons.location_on,
-                      color: Colors.green, // Set your desired icon color
-                    ),
-                    SizedBox(width: 8.0),
-                    Text(
-                      'Flat',
-                      style: TextStyle(
-                        color: Colors.black, // Set your desired text color
-                      ),
-                    ),
-                    Icon(
-                      Icons.arrow_drop_down_rounded,
-                      color: Colors.black, // Set your desired icon color
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ],
+  final List<Map<String, dynamic>> _categories = [
+    {
+      'image': 'assets/images/apple.png',
+      'name': 'Fruits',
+    },
+    {
+      'image': 'assets/images/broccoli.png',
+      'name': 'Vegetables',
+    },
+    {
+      'image': 'assets/images/cheese.png',
+      'name': 'Diary',
+    },
+    {
+      'image': 'assets/images/meat.png',
+      'name': 'Meat',
+    },
+  ];
+
+  Home({super.key});
+
+  AppBar _buildAppBar() {
+    return AppBar(
+      elevation: 0,
+      backgroundColor: Colors.white,
+      leading: const Padding(
+        padding: EdgeInsets.only(left: 16.0),
+        child: CircleAvatar(
+          backgroundImage: AssetImage('assets/images/Group 289.png'),
         ),
-        body: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildsearchbar(),
-              _buildofferpageview(),
-              _buildcatagories(),
-              _buildbestselling(),
-            ],
-          ),
-        ),
-        bottomNavigationBar: _buildNavigationBar(),
       ),
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: const [
+          Text(
+            'Good Morning',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 10,
+            ),
+          ),
+          Text(
+            'Amelia Barlow',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+      actions: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 10.0),
+          child: TextButton(
+            onPressed: () {
+              // Handle button tap
+            },
+            style: TextButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50.0),
+              ),
+              backgroundColor: Colors.white,
+            ),
+            child: Row(
+              children: const [
+                Icon(
+                  Icons.location_on,
+                  color: Colors.green,
+                ),
+                SizedBox(width: 8.0),
+                Text(
+                  'Flat',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
+                Icon(
+                  Icons.arrow_drop_down_rounded,
+                  color: Colors.black,
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 
-  Widget _buildsearchbar() {
+  Widget _buildSearchBar() {
     return Container(
+      margin: const EdgeInsets.only(bottom: 16.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(20.0),
       ),
-      margin: EdgeInsets.all(16.0),
       child: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0),
         child: TextField(
@@ -126,16 +125,13 @@ class _HomePageState extends State<Home> {
     );
   }
 
-  Widget _buildofferpageview() {
+  Widget _buildOffersSection(BuildContext context) {
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.2,
       child: PageView.builder(
         itemCount: _offers.length,
         itemBuilder: (BuildContext context, int index) {
           return Container(
-
-            width: MediaQuery.of(context).size.width * 1.0,
-            height: MediaQuery.of(context).size.height * 0.2,
             margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
@@ -157,7 +153,10 @@ class _HomePageState extends State<Home> {
                     color: Colors.transparent,
                     child: Text(
                       _offers[index]['text'],
-                      style: const TextStyle(fontSize: 18, color: Colors.green),
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.green,
+                      ),
                     ),
                   ),
                 ),
@@ -169,7 +168,7 @@ class _HomePageState extends State<Home> {
     );
   }
 
-  Widget _buildcatagories() {
+  Widget _buildCategoriesSection(BuildContext context) {
     return Column(
       children: [
         Row(
@@ -193,95 +192,116 @@ class _HomePageState extends State<Home> {
             ),
           ],
         ),
-        Row(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.15,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey,
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/apple.png',
-                        fit: BoxFit.contain,
+        SizedBox(
+          height: MediaQuery.of(context).size.height * 0.15,
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: _categories.length,
+            itemBuilder: (BuildContext context, int index) {
+              return GestureDetector(
+                onTap: () {
+                  // Handle the click for the category
+                },
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.symmetric(
+                          horizontal: MediaQuery.of(context).size.width * 0.05),
+                      width: MediaQuery.of(context).size.width * 0.13,
+                      height: MediaQuery.of(context).size.height * 0.13,
+                      decoration: const BoxDecoration(
+                        shape: BoxShape.circle,
+                        color: Colors.grey,
+                      ),
+                      child: Center(
+                        child: Image.asset(
+                          _categories[index]['image'],
+                          fit: BoxFit.contain,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.15,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey,
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/broccoli.png',
-                        fit: BoxFit.contain,
+                    Text(
+                      _categories[index]['name'],
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'DM Sans',
+                        fontWeight: FontWeight.normal,
+                        height: 1,
+                        fontSize: 12,
                       ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.15,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey,
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/cheese.png',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  Container(
-                    width: MediaQuery.of(context).size.width * 0.15,
-                    height: MediaQuery.of(context).size.height * 0.15,
-                    decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.grey,
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        'assets/images/meat.png',
-                        fit: BoxFit.contain,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ],
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ],
     );
   }
 
-  Widget _buildbestselling() {
+  Widget _buildColumn(String imagePath, String title, String description,
+      BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: MediaQuery.of(context).size.width * 0.4,
+          height: MediaQuery.of(context).size.height * 0.25,
+          decoration: BoxDecoration(
+            color: Colors.grey[200],
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Stack(
+            children: [
+              Positioned.fill(
+                child: Image.asset(
+                  imagePath,
+                  fit: BoxFit.contain,
+                ),
+              ),
+              Positioned(
+                bottom: 8,
+                left: 8,
+                right: 8,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white,
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Colors.white,
+                          ),
+                        ),
+                        const Spacer(),
+                        const Icon(
+                          Icons.add_circle,
+                          size: 32,
+                          color: Colors.blue,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBestSellingSection(BuildContext context) {
     return Column(
       children: [
         Row(
@@ -305,27 +325,64 @@ class _HomePageState extends State<Home> {
             ),
           ],
         ),
+        GridView.count(
+          crossAxisCount: 2,
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            _buildColumn(
+              'assets/images/bell_pepper.png',
+              'Bell Pepper',
+              'Description 1',
+              context,
+            ),
+            _buildColumn(
+              'assets/images/lamb_meat.png',
+              'Lamb Meat',
+              'Description 2',
+              context,
+            ),
+          ],
+        ),
       ],
     );
   }
 
-  Widget _buildNavigationBar() {
-    return BottomNavigationBar(
-      currentIndex: 0,
-      items: const [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Scaffold(
+        appBar: _buildAppBar(),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              _buildSearchBar(),
+              _buildOffersSection(context),
+              _buildCategoriesSection(context),
+              _buildBestSellingSection(context),
+            ],
+          ),
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.shopping_cart),
-          label: 'Cart',
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: 0,
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home_rounded),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.shopping_cart),
+              label: 'Cart',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
         ),
-        BottomNavigationBarItem(
-          icon: Icon(Icons.person),
-          label: 'Profile',
-        ),
-      ],
+      ),
     );
   }
 }
