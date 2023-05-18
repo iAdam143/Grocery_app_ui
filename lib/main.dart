@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:grocery_app_ui/screens/Categories/VegetableScreen.dart';
 import 'package:grocery_app_ui/screens/Splash.dart';
 
+
 void main() {
   runApp(
     MyApp(),
