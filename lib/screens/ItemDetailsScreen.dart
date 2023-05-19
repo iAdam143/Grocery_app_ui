@@ -115,7 +115,7 @@ class _ItemDetailsScreenState extends State<ItemDetailsScreen> {
                   if (_showSearchBar) ...[
                     Padding(
                       padding: const EdgeInsets.all(16.0),
-                      child: SearchBar(),
+                      child: Search_Bar(),
                     ),
                   ],
                   const Spacer(),

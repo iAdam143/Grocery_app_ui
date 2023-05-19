@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
+import 'package:grocery_app_ui/CustomComponenets/SearchBar.dart';
 import '../../CustomComponenets/CustomGridView.dart';
-import '../../CustomComponenets/Searchbar.dart';
 import '../../lists/listData.dart';
 
 class VegetablesScreen extends StatefulWidget {
@@ -63,22 +62,23 @@ class _VegetablesScreenState extends State<VegetablesScreen> {
   }
 
   AppBar buildAppBar2(BuildContext context) {
-    final double searchBarHeight =
-    _showSearchBar ? MediaQuery.of(context).size.height * 0.1 : kToolbarHeight;
+    final double searchBarHeight = _showSearchBar
+        ? MediaQuery.of(context).size.height * 0.1
+        : kToolbarHeight;
 
     return AppBar(
       leading: _showSearchBar
           ? null
           : IconButton(
-        icon: const Icon(
-          Icons.arrow_back_ios_rounded,
-          color: Colors.black,
-          size: 12,
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
+              icon: const Icon(
+                Icons.arrow_back_ios_rounded,
+                color: Colors.black,
+                size: 12,
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
       backgroundColor: Colors.white,
       elevation: 0,
       flexibleSpace: Column(
@@ -87,7 +87,7 @@ class _VegetablesScreenState extends State<VegetablesScreen> {
           AnimatedContainer(
             duration: const Duration(milliseconds: 300),
             height: searchBarHeight,
-            child: _showSearchBar ? SearchBar() : const SizedBox(),
+            child: _showSearchBar ? Search_Bar() : const SizedBox(),
           ),
         ],
       ),
@@ -96,25 +96,25 @@ class _VegetablesScreenState extends State<VegetablesScreen> {
       title: _showSearchBar
           ? null
           : const Text(
-        'Vegetables 🌽',
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontFamily: 'DM Sans',
-          height: 1,
-        ),
-      ),
+              'Vegetables 🌽',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontFamily: 'DM Sans',
+                height: 1,
+              ),
+            ),
       actions: _showSearchBar
           ? null
           : [
-        IconButton(
-          icon: const Icon(
-            Icons.search,
-            color: Colors.black,
-            size: 24,
-          ),
-          onPressed: _toggleSearchBar,
-        ),
-      ],
+              IconButton(
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.black,
+                  size: 24,
+                ),
+                onPressed: _toggleSearchBar,
+              ),
+            ],
     );
   }
 }

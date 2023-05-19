@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class SearchBar extends StatefulWidget {
+class Search_Bar extends StatefulWidget {
   @override
   _SearchBarState createState() => _SearchBarState();
 }
 
-class _SearchBarState extends State<SearchBar> {
+class _SearchBarState extends State<Search_Bar> {
   TextEditingController _searchController = TextEditingController();
 
   @override
