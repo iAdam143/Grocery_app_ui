@@ -40,6 +40,7 @@ dependencies:
   flutter_svg : ^2.0.0
   country_code_picker: ^3.0.0
   google_fonts: ^4.0.4
+  google_maps_flutter: ^2.2.6
 dev_dependencies:
 
   flutter_test:
@@ -79,6 +80,10 @@ flutter:
     - assets/images/ginger.png
     - assets/images/potato.jpg
     - assets/images/onion.jpg
+    - assets/images/calendar.png
+    - assets/images/favourites.png
+    - assets/images/lotus.png
+    - assets/images/matches.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

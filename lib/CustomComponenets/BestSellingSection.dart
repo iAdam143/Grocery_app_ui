@@ -1,20 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:grocery_app_ui/CustomComponenets/CustomGridView.dart';
 
-List<String> itemImages = [
-  'assets/images/bell_pepper.png',
-  'assets/images/lamb_meat.png',
-];
-
-List<String> itemTitles = [
-  'Bell Pepper',
-  'Lamb Meat',
-];
-
-List<String> itemDescriptions = [
-  '1kg, 4\$',
-  '1kg, 45\$',
-];
+import '../lists/listData.dart';
 
 Widget buildBestSellingSection(BuildContext context) {
   return Column(
@@ -48,7 +35,7 @@ Widget buildBestSellingSection(BuildContext context) {
         ),
       ),
       SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-      buildCustomGridView(context, itemImages, itemTitles, itemDescriptions),
+      buildCustomGridView(context, itemImages.sublist(0,2), itemTitles.sublist(0,2), priceperkg.sublist(0,2),description.sublist(0,2)),
     ],
   );
 }

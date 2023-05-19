@@ -1,65 +1,108 @@
 import 'package:flutter/material.dart';
 
+import '../lists/cart_items.dart';
+import '../screens/ItemDetailsScreen.dart';
+
 Widget buildColumn(
-    String imagePath, String title, String description, BuildContext context) {
-  return Container(
-    width: double.infinity,
-    decoration: BoxDecoration(
-      color: Colors.grey[200],
-      borderRadius: BorderRadius.circular(15),
-    ),
-    child: Column(
-      children: [
-        SizedBox(height: MediaQuery.of(context).size.height * 0.02),
-        Expanded(
-          child: Image.asset(
-            imagePath,
-            fit: BoxFit.cover,
+  String imagePath,
+  String title,
+  String priceperkg,
+  String description,
+  BuildContext context,
+) {
+  void addItemToCart() {
+    GroceryItem item = GroceryItem(
+      title: title,
+      price: priceperkg,
+      imagePath: imagePath,
+      quantity: 1,
+    );
+    groceryItems.add(item);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text('Item added to cart'),
+        duration: Duration(seconds: 2), // Adjust the duration as needed
+      ),
+    );
+  }
+
+  return GestureDetector(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ItemDetailsScreen(
+            imagePath: imagePath,
+            title: title,
+            priceperkg: priceperkg,
+            description: description,
           ),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.04,
-            vertical: 8.0,
+      );
+    },
+    child: Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
+        borderRadius: BorderRadius.circular(15),
+      ),
+      child: Column(
+        children: [
+          SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+          Expanded(
+            child: Image.asset(
+              imagePath,
+              fit: BoxFit.cover,
+            ),
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: EdgeInsets.only(bottom: 4.0),
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontFamily: 'DM Sans',
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              Row(
-                children: [
-                  Text(
-                    description,
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.04,
+              vertical: 8.0,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.only(bottom: 4.0),
+                  child: Text(
+                    title,
                     style: const TextStyle(
-                      fontSize: 15,
+                      fontSize: 16,
                       fontFamily: 'DM Sans',
                       fontWeight: FontWeight.bold,
-                      color: Colors.red,
+                      color: Colors.black,
                     ),
                   ),
-                  const Spacer(),
-                  const Icon(
-                    Icons.add_circle,
-                    size: 32,
-                    color: Colors.green,
-                  ),
-                ],
-              ),
-            ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      priceperkg,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontFamily: 'DM Sans',
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
+                    const Spacer(),
+                    IconButton(
+                      icon: const Icon(
+                        Icons.add_circle,
+                        size: 32,
+                        color: Colors.green,
+                      ),
+                      onPressed: addItemToCart,
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }
@@ -68,7 +111,8 @@ Widget buildCustomGridView(
   BuildContext context,
   List<String> itemImages,
   List<String> itemTitles,
-  List<String> itemDescriptions,
+  List<String> itempriceperkg,
+  List<String> itempdescription,
 ) {
   final double screenWidth = MediaQuery.of(context).size.width;
   int crossAxisCount = 2;
@@ -97,7 +141,8 @@ Widget buildCustomGridView(
           return buildColumn(
             itemImages[index],
             itemTitles[index],
-            itemDescriptions[index],
+            itempriceperkg[index],
+            itempdescription[index],
             context,
           );
         },
