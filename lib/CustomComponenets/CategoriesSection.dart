@@ -69,7 +69,7 @@ Widget build_Categories_Section(BuildContext context) {
                   Container(
                     margin: EdgeInsets.symmetric(
                         horizontal: MediaQuery.of(context).size.width * 0.05),
-                    width: MediaQuery.of(context).size.width * 0.13,
+                    width: MediaQuery.of(context).size.width * 0.15,
                     height: MediaQuery.of(context).size.height * 0.13,
                     decoration: BoxDecoration(
                       color: Colors.grey[200],
